@@ -50,8 +50,8 @@
 
         <!-- THUMBS -->
         <div class="thumbs-slider" id="thumbs-container">
-          <div class="col thumb" v-for="slide in slides">
-            <img :src="'./' + slide.image" />
+          <div class="col thumb" v-for="(slide,index) in slides">
+            <img :src="'./' + slide.image" @click="switchSlide(index)" />
           </div>
           <!-- <div class="col thumb">
 					<img src="./img/02.webp">
@@ -68,6 +68,7 @@
         </div>
       </div>
 
+      <!-- PULSANTI -->
       <div class="slider-controls">
         <button class="btn btn-outline-dark" id="prev" @click="prevSlide()">
           <i class="fa-solid fa-chevron-left"></i>
@@ -77,7 +78,11 @@
           <i class="fa-solid fa-repeat"></i>
         </button>
 
-        <button class="btn btn-outline-dark" id="stop-autoplay">
+        <button
+          class="btn btn-outline-dark"
+          id="stop-autoplay"
+          @click="stopAutoplay()"
+        >
           <i class="fa-solid fa-stop"></i>
         </button>
 

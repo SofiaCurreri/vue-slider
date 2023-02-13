@@ -39,6 +39,7 @@ const app = createApp({
       ],
 
       activeSlide: 0,
+      autoplayInterval: false,
     };
   },
 
@@ -58,6 +59,20 @@ const app = createApp({
         this.activeSlide = this.slides.length - 1;
       }
     },
+
+    switchSlide(i) {
+      this.activeSlide = i;
+    },
+
+    stopAutoplay() {
+      clearInterval(this.autoplayInterval);
+    },
+  },
+
+  created() {
+    this.autoplayInterval = setInterval(() => {
+      this.nextSlide();
+    }, 3000);
   },
 });
 
