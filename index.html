@@ -29,18 +29,47 @@
 
     <!-- COLLEGAMENTO CSS -->
     <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- CDN VUE JS -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </head>
 
   <body>
-    <div class="container">
+    <div class="container" id="carousel">
       <div class="slider">
-        <div class="main-slider" id="main-container"></div>
+        <!-- SLIDE PRINCIPALE -->
+        <div class="main-slider" id="main-container">
+          <div class="slide active">
+            <img :src="'./' + slides[activeSlide].image" />
+            <div class="slide-text">
+              <h2>{{slides[activeSlide].title}}</h2>
+              <p>{{slides[activeSlide].text}}</p>
+            </div>
+          </div>
+        </div>
 
-        <div class="thumbs-slider" id="thumbs-container"></div>
+        <!-- THUMBS -->
+        <div class="thumbs-slider" id="thumbs-container">
+          <div class="col thumb" v-for="slide in slides">
+            <img :src="'./' + slide.image" />
+          </div>
+          <!-- <div class="col thumb">
+					<img src="./img/02.webp">
+				</div>
+				<div class="col thumb">
+					<img src="./img/03.webp">
+				</div>
+				<div class="col thumb">
+					<img src="./img/04.webp">
+				</div>
+				<div class="col thumb">
+					<img src="./img/05.webp">
+				</div> -->
+        </div>
       </div>
 
       <div class="slider-controls">
-        <button class="btn btn-outline-dark" id="prev">
+        <button class="btn btn-outline-dark" id="prev" @click="prevSlide()">
           <i class="fa-solid fa-chevron-left"></i>
         </button>
 
@@ -52,7 +81,7 @@
           <i class="fa-solid fa-stop"></i>
         </button>
 
-        <button class="btn btn-outline-dark" id="next">
+        <button class="btn btn-outline-dark" id="next" @click="nextSlide()">
           <i class="fa-solid fa-chevron-right"></i>
         </button>
       </div>
