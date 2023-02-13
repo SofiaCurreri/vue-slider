@@ -36,7 +36,11 @@
 
   <body>
     <div class="container" id="carousel">
-      <div class="slider">
+      <div
+        class="slider"
+        @mouseover="mouseOver = true"
+        @mouseleave="mouseOver = false"
+      >
         <!-- SLIDE PRINCIPALE -->
         <div class="main-slider" id="main-container">
           <div class="slide active">
@@ -53,18 +57,6 @@
           <div class="col thumb" v-for="(slide,index) in slides">
             <img :src="'./' + slide.image" @click="switchSlide(index)" />
           </div>
-          <!-- <div class="col thumb">
-					<img src="./img/02.webp">
-				</div>
-				<div class="col thumb">
-					<img src="./img/03.webp">
-				</div>
-				<div class="col thumb">
-					<img src="./img/04.webp">
-				</div>
-				<div class="col thumb">
-					<img src="./img/05.webp">
-				</div> -->
         </div>
       </div>
 
@@ -74,8 +66,12 @@
           <i class="fa-solid fa-chevron-left"></i>
         </button>
 
-        <button class="btn btn-outline-dark" id="inverti-autoplay">
-          <i class="fa-solid fa-repeat"></i>
+        <button
+          class="btn btn-outline-dark"
+          id="start-autoplay"
+          @click="startAutoplay()"
+        >
+          <i class="fa-solid fa-play"></i>
         </button>
 
         <button

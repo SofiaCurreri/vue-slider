@@ -40,6 +40,7 @@ const app = createApp({
 
       activeSlide: 0,
       autoplayInterval: false,
+      mouseOver: false,
     };
   },
 
@@ -66,6 +67,14 @@ const app = createApp({
 
     stopAutoplay() {
       clearInterval(this.autoplayInterval);
+    },
+
+    startAutoplay() {
+      this.autoplayInterval = setInterval(() => {
+        if (!this.mouseOver) {
+          this.nextSlide();
+        }
+      }, 3000);
     },
   },
 
